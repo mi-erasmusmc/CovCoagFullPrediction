@@ -1,10 +1,10 @@
 Package: CovCoagFullPrediction
 Type: Package
-Title: A Skeleton for Prediction Development Studies that use the PatientLevelPrediction Framework
-Version: 0.0.8
-Author: Jenna Reps [aut, cre]
-Maintainer: Jenna M Reps <reps@ohdsi.org>
-Description: A skeleton package to be used as a starting point when implementing patient-level prediction development studies.
+Title: Coagulopathy prediction in SARS-Cov-2
+Version: 1.0.0
+Author: Henrik John
+Maintainer: Henrik John <l.john@erasmusmc.nl>
+Description: Coagulopathy prediction in SARS-Cov-2 using full set of standard predictors.
 Depends:
     R(>= 3.6.0)
 Imports:
