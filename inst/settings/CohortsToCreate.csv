@@ -1,11 +1,9 @@
 cohortId,atlasId,name
-22710,22710,COVID19_positive_test
-22709,22709,COVID19_diagnosis_narrow
-22708,22708,COVID19_diagnosis_broad
-22707,22707,COVID19_PCR_positive_test
+22932,22932,COVID19_PCR_positive_test_or_diagnosis
 22601,22601,MI
 22600,22600,IS
 22599,22599,MI_and_IS
 22595,22595,PE
 22596,22596,DVT_narrow
 22602,22602,VTE_narrow
+22933,22933,DTH

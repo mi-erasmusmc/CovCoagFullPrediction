@@ -57,26 +57,3 @@ createAnalysesDetails("inst/settings")
 # Store environment in which the study was executed -----------------------
 OhdsiRTools::insertEnvironmentSnapshotInPackage("CovCoagFullPrediction")
 
-# Cohorts -----
-# Because of some inconsistencies in bringing in diagnosis cohorts from atlas, 
-# here I specify the full set of codes to be used
-library(here)
-library(SqlRender)
-library(stringr)
-# Diagnosis cohorts
-diag_template_sql<-readSql(here("extras", "template sql", "COVID19 diagnosis template.sql"))
-# broad
-diag_broad_codes<-"756031,756039,3655975,3655976,3655977,3656667,3656668,3656669,3661405,3661406,3661408,3661631,3661632,3661748,3661885,3662381,3663281,37310254,37310283,37310284,37310286,37310287,37311060,37311061,320651,439676,4100065,37016927,37396171,40479642,700296,700297,704995,704996,37311060, 45763724, 37310268, 37310282"
-diag_broad_sql<-str_replace(diag_template_sql, "@codes",
-                            diag_broad_codes)
-fileConn<-file(here("inst", "sql", "sql_server", "COVID19_diagnosis_broad.sql"))
-writeLines(diag_broad_sql, fileConn)
-close(fileConn)
-# narrow
-diag_narrow_codes<-"756031,756039,3655975,3655976,3655977,3656667,3656668,3656669,3661405,3661406,3661408,3661631,3661632,3661748,3661885,3662381,3663281,37310254,37310283,37310284,37310286,37310287,37311061,700296,700297,704995,704996"
-diag_narrow_sql<-str_replace(diag_template_sql, "@codes",
-                             diag_narrow_codes)
-fileConn<-file(here("inst", "sql", "sql_server", "COVID19_diagnosis_narrow.sql"))
-writeLines(diag_narrow_sql, fileConn)
-close(fileConn)
-
