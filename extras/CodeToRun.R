@@ -55,7 +55,7 @@ analysesToValidate = NULL
 # want to package the results ready to share? Set below to TRUE
 packageResults <- FALSE
 # want to create a shiny app with the results to share online? Set below to TRUE
-createShiny <- TRUE
+createShiny <- FALSE
 # want to create a journal document with the settings and results populated? Set below to TRUE
 createJournalDocument <- FALSE
 analysisIdDocument = 1

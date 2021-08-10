@@ -23,51 +23,9 @@
       22932,
       22932,
       22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
-      22932,
       22932
     ],
     "populationSettingId": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      3,
-      3,
-      3,
-      3,
-      3,
-      3,
-      3,
       1,
       1,
       1,
@@ -111,27 +69,6 @@
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       1
     ],
     "covariateSettingId": [
@@ -155,51 +92,9 @@
       1,
       1,
       1,
-      1,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2
+      1
     ],
     "outcomeId": [
-      22601,
-      22600,
-      22599,
-      22595,
-      22596,
-      22602,
-      22933,
-      22601,
-      22600,
-      22599,
-      22595,
-      22596,
-      22602,
-      22933,
-      22601,
-      22600,
-      22599,
-      22595,
-      22596,
-      22602,
-      22933,
       22601,
       22600,
       22599,
@@ -301,7 +196,7 @@
     "VTE_narrow",
     "DTH"
   ],
-  "createdDate": 18844,
+  "createdDate": 18849,
   "createdBy": "Henrik John",
   "cohortDefinitions": [
     {
@@ -10944,8 +10839,8 @@
     }
   ],
   "modelSettings": [{"LassoLogisticRegressionSettings": {"variance": 0.01}}],
-  "covariateSettings": [
-    [{
+  "covariateSettings": [[
+    {
       "settings": {
         "shortTermStartDays": -30,
         "ConditionGroupEraLongTerm": true,
@@ -10961,7 +10856,6 @@
         "excludedCovariateConceptIds": [],
         "ProcedureOccurrenceLongTerm": true,
         "longTermStartDays": -365,
-        "DemographicsAge": true,
         "DrugGroupEraLongTerm": true,
         "MeasurementLongTerm": true,
         "includedCovariateConceptIds": [],
@@ -10971,34 +10865,70 @@
         "endDays": 0
       },
       "fnct": "createCovariateSettings"
-    }],
-    [{
+    },
+    {
       "settings": {
-        "ObservationAnyTimePrior": true,
-        "shortTermStartDays": -30,
-        "DemographicsEthnicity": true,
-        "DemographicsGender": true,
-        "MeasurementAnyTimePrior": true,
-        "includedCovariateIds": [],
-        "addDescendantsToInclude": false,
-        "DemographicsRace": true,
-        "ProcedureOccurrenceAnyTimePrior": true,
-        "DeviceExposureAnyTimePrior": true,
-        "mediumTermStartDays": -180,
-        "attr_class": "covariateSettings",
-        "excludedCovariateConceptIds": [],
-        "longTermStartDays": -365,
-        "DemographicsAge": true,
-        "includedCovariateConceptIds": [],
-        "DrugGroupEraMediumTerm": true,
-        "attr_fun": "getDbDefaultCovariateData",
-        "ConditionGroupEraAnyTimePrior": true,
-        "addDescendantsToExclude": false,
-        "temporal": false,
-        "endDays": 0
+        "covariateName": "Age <20",
+        "covariateId": 14580020,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x<20] <- 1; return(result)}"
       },
-      "fnct": "createCovariateSettings"
-    }]
-  ],
+      "fnct": "createAgeCovariateSettings"
+    },
+    {
+      "settings": {
+        "covariateName": "Age 20-44",
+        "covariateId": 14582044,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x>=20 & x<=44] <- 1; return(result)}"
+      },
+      "fnct": "createAgeCovariateSettings"
+    },
+    {
+      "settings": {
+        "covariateName": "Age 45-54",
+        "covariateId": 14584554,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x>=45 & x<=54] <- 1; return(result)}"
+      },
+      "fnct": "createAgeCovariateSettings"
+    },
+    {
+      "settings": {
+        "covariateName": "Age 55-64",
+        "covariateId": 14585564,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x>=55 & x<=64] <- 1; return(result)}"
+      },
+      "fnct": "createAgeCovariateSettings"
+    },
+    {
+      "settings": {
+        "covariateName": "Age 65-74",
+        "covariateId": 14586574,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x>=65 & x<=74] <- 1; return(result)}"
+      },
+      "fnct": "createAgeCovariateSettings"
+    },
+    {
+      "settings": {
+        "covariateName": "Age 75-84",
+        "covariateId": 14587584,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x>=75 & x<=84] <- 1; return(result)}"
+      },
+      "fnct": "createAgeCovariateSettings"
+    },
+    {
+      "settings": {
+        "covariateName": "Age >84",
+        "covariateId": 14588500,
+        "analysisId": 458,
+        "ageMap": "function(x){result <- rep(0, length(x)); result[x>84] <- 1; return(result)}"
+      },
+      "fnct": "createAgeCovariateSettings"
+    }
+  ]],
   "packageName": "CovCoagFullPrediction"
 }
