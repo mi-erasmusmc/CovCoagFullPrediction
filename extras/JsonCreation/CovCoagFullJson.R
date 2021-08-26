@@ -23,7 +23,8 @@ populationSettings <- list(PatientLevelPrediction::createStudyPopulationSettings
                                                                                  requireTimeAtRisk = FALSE))
 
 
-modelList <- list(list("LassoLogisticRegressionSettings" = list("variance" = 0.01)))
+modelList <- list(list("LassoLogisticRegressionSettings" = list("variance" = 0.01,
+                                                                "seed" = 1000)))
 
 covariateSettings <- list(list(list(fnct = 'createCovariateSettings',
                                     settings = FeatureExtraction::createCovariateSettings(useDemographicsGender = T,
@@ -55,32 +56,30 @@ resrictModelCovs <- NULL
 executionSettings <- list(minCovariateFraction = 0.000,
                           normalizeData = T,
                           testSplit = "stratified",
-                          testFraction = 0.20,
+                          testFraction = 0.25,
                           splitSeed = 1000,
                           nfold = 3)
 
 json <- createDevelopmentStudyJson(packageName = 'CovCoagFullPrediction',
-                           packageDescription = 'Prediction model based on full predictor set.',
-                           createdBy = 'Henrik John',
-                           organizationName = 'Erasmus University Medical Center',
-                           targets = data.frame(targetId = c(22956,22957,22958),
-                                                cohortId = c(22956,22957,22958),
-                                                targetName = c('Unvaccinated COVID19 PCR positive test or diagnosis',
-                                                               'Unvaccinated COVID19 PCR positive test or diagnosis - age 65 and above',
-                                                               'Unvaccinated COVID19 PCR positive test or diagnosis - age below 65')),
-                           outcomes = data.frame(outcomeId = c(22601,22600,22599,22595,22596,22602,22933,22954),
-                                                 cohortId = c(22601,22600, 22599,22595,22596,22602,22933,22954),
-                                                 outcomeName = c('MI','IS','MI and IS','PE','DVT narrow',
-                                                                 'VTE narrow', 'DTH', 'STR')),
-                           populationSettings = populationSettings,
-                           modelList = modelList,
-                           covariateSettings = covariateSettings,
-                           resrictOutcomePops = resrictOutcomePops,
-                           resrictModelCovs = resrictModelCovs,
-                           executionSettings = executionSettings,
-                           webApi = webApi,
-                           outputLocation = 'D:/hjohn/CovCoagFull',
-                           jsonName = 'predictionAnalysisList.json')
+                                   packageDescription = 'Prediction model based on full predictor set.',
+                                   createdBy = 'Henrik John',
+                                   organizationName = 'Erasmus University Medical Center',
+                                   targets = data.frame(targetId = c(22956),
+                                                        cohortId = c(22956),
+                                                        targetName = c('Target')),
+                                   outcomes = data.frame(outcomeId = c(22601,22600,22599,22595,22596,22602,22933,22954),
+                                                         cohortId = c(22601,22600, 22599,22595,22596,22602,22933,22954),
+                                                         outcomeName = c('MI','IS','MI or IS','PE','DVT narrow',
+                                                                         'VTE narrow', 'DTH', 'STR')),
+                                   populationSettings = populationSettings,
+                                   modelList = modelList,
+                                   covariateSettings = covariateSettings,
+                                   resrictOutcomePops = resrictOutcomePops,
+                                   resrictModelCovs = resrictModelCovs,
+                                   executionSettings = executionSettings,
+                                   webApi = webApi,
+                                   outputLocation = 'D:/hjohn/CovCoagFull',
+                                   jsonName = 'predictionAnalysisList.json')
 
 specifications <- Hydra::loadSpecifications(file.path('D:/hjohn/CovCoagFull', 'predictionAnalysisList.json'))
 Hydra::hydrate(specifications = specifications, outputFolder = 'D:/hjohn/CovCoagFull/CovCoagFullPrediction')
